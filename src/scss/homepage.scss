@@ -1,0 +1,74 @@
+.homepage-main-container {
+    display: flex;
+    flex-direction: row;
+    // width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 200px;
+    align-self: center;
+    gap: 100px;
+    // text-align: center;
+
+    .homepage-rightside {
+        height: 550px;
+        width: 550px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .homepage-leftside {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 20px;
+
+        .hiThere {
+            font-size: 40px;
+            font-weight: 400;
+        }
+        .myName {
+            font-size: 56px;
+            font-weight: 800;
+        }
+        .smallDescription {
+            font-size: 26px;
+            color: $grey-text-color;
+            font-weight: 500;
+        }
+        .frontendDeveloper {
+            color: $primary-text-color;
+        }
+        .resume-btn-container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            // margin-top: 20px;
+
+            .contact-btn {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                background: $primary-text-color;
+                color: $white;
+                padding: 10px 20px;
+                border-radius: 8px;
+                font-weight: 600;
+            }
+            .resume-btn {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                color: $primary-text-color;
+                background: $white;
+                border: 1px solid $primary-text-color;
+                padding: 10px 20px;
+                border-radius: 8px;
+                font-weight: 600;
+            }
+        }
+    }
+}

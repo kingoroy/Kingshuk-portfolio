@@ -1,0 +1,17 @@
+.portfolio-logo-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: row;
+}
+.greaterThan {
+    margin-left: -20px;
+    color: $primary-text-color;
+}
+.lessThan {
+    color: $primary-text-color;
+}
+.firstLetter {
+    color: $primary-text-color;
+    font-size: 50px;
+}
