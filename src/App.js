@@ -17,6 +17,7 @@ function App() {
   const experienceRef = useRef();
   const personalProjectRef = useRef();
   const scrollTimeoutRef = useRef(null);
+  const touchStartY = useRef(0);
 
   const handleScroll = (deltaY) => {
     const newScrollY = scrollYRef.current + deltaY;
@@ -48,32 +49,47 @@ function App() {
     }
   };
 
+  const onWheel = (e) => {
+    e.preventDefault();
+    handleScroll(e.deltaY);
+
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+
+    scrollTimeoutRef.current = setTimeout(() => {
+      handleScrollEnd();
+    }, 150);
+  };
+
+  const onTouchStart = (e) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const onTouchMove = (e) => {
+    e.preventDefault();
+    const touchEndY = e.touches[0].clientY;
+    const deltaY = touchStartY.current - touchEndY;
+
+    handleScroll(deltaY);
+
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+
+    scrollTimeoutRef.current = setTimeout(() => {
+      handleScrollEnd();
+    }, 150);
+  };
+
   useEffect(() => {
-    const onScroll = (e) => {
-      e.preventDefault();
-      handleScroll(e.deltaY);
-
-      // Clear previous timeout if still scrolling
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-
-      // Set a new timeout to detect when the user stops scrolling
-      scrollTimeoutRef.current = setTimeout(() => {
-        handleScrollEnd();
-      }, 150);
-    };
-
-    const onTouchMove = (e) => {
-      e.preventDefault();
-      handleScroll(e.touches[0].clientY - (scrollYRef.current + window.innerHeight / 2));
-    };
-
-    window.addEventListener('wheel', onScroll, { passive: false });
+    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('touchstart', onTouchStart, { passive: false });
     window.addEventListener('touchmove', onTouchMove, { passive: false });
 
     return () => {
-      window.removeEventListener('wheel', onScroll);
+      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchmove', onTouchMove);
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
