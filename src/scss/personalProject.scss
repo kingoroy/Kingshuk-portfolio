@@ -10,8 +10,10 @@
     gap: 30px;
 
     @include breakpoint(small-only) {
-         padding: 0px 20px;
-         gap: 3px;
+         padding: 80px 20px;
+         gap: 5px;
+        //  align-items: start;
+         justify-content: start;
     }
     .project-contentWrapper {
         display: flex;
@@ -22,7 +24,7 @@
         color: $black;
         
         @include breakpoint(small-only) {
-         gap: 10px;
+         gap: 60px;
          flex-direction: column;
          justify-content: center;
          align-items: center;
