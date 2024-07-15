@@ -2,10 +2,42 @@ $primary-text-color: var(--primary-text-color);
 $grey-text-color: var(--grey-text-color);
 $white: var(--white);
 $grey-border: var(--grey-border);
+$black: var(--black);
+$portfolio-background: var(--portfolio-background);
+$light-grey-text-color: var(--light-grey-text-color);
+$card-boxShadow: var(--card-boxShadow);
+
+
+
+//--------------------------------------breakpoints for responsiveness------------------------>
+
+$bp-small: 320px !default;
+$bp-small-medium: 650px !default;
+$bp-medium: 768px !default;
+$bp-medium-large: 950px !default;
+$bp-large: 1280px !default;
+$bp-max-small-only: 767.98px !default;
+$bp-small-small: 450px !default;
 
 :root {
-    --primary-text-color: #00cc66;
+    --primary-text-color: #00c763;
     --grey-text-color: #787c8f;
+    --light-grey-text-color: #25252d;
     --white: white;
     --grey-border: #dcdee0;
+    --black: black;
+    --portfolio-background: linear-gradient(to right, #e4ecf3, #f5f9fc, #e4ecf3);
+    --primary-btn-red: #f70767;
+    --card-boxShadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;;
+}
+
+.dark-mode {
+    --white: black;
+    --grey-border: #3b3b3b;
+    --black: white;
+    --portfolio-background: linear-gradient(to right, #1b1b1b, #262626,#1b1b1b);
+    --grey-text-color: #b8b8b8;
+    --light-grey-text-color: #bfbfd1;
+    --primary-btn-red:#f70767;
+    --card-boxShadow:  rgba(201, 200, 200, 0.04) 0px 3px 5px;
 }

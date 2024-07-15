@@ -10,7 +10,13 @@
     padding: 0px 200px;
     align-self: center;
     gap: 100px;
-    // text-align: center;
+
+    @include breakpoint(small-only) {
+        flex-direction: column-reverse;
+        gap: 10px;
+        justify-content: center;
+        padding: 0px 20px;
+    }
 
     .homepage-rightside {
         height: 550px;
@@ -19,6 +25,11 @@
         align-items: center;
         justify-content: center;
 
+        @include breakpoint(small-only) {
+            height: 200px;
+            width: 200px;
+        }
+
     }
     .homepage-leftside {
         display: flex;
@@ -26,18 +37,34 @@
         align-items: start;
         gap: 20px;
 
+        @include breakpoint(small-only) {
+          align-items: center;
+        }
         .hiThere {
             font-size: 40px;
             font-weight: 400;
+            color: $black;
+
+            @include breakpoint(small-only) {
+                font-size: 20px;
+            }
         }
         .myName {
             font-size: 56px;
             font-weight: 800;
+            color: $black;
+            @include breakpoint(small-only) {
+              font-size: 22px;
+            }
         }
         .smallDescription {
             font-size: 26px;
             color: $grey-text-color;
             font-weight: 500;
+
+            @include breakpoint(small-only) {
+                font-size: 16px;
+              }
         }
         .frontendDeveloper {
             color: $primary-text-color;
@@ -57,17 +84,31 @@
                 padding: 10px 20px;
                 border-radius: 8px;
                 font-weight: 600;
+                width: fit-content;
+                text-wrap: nowrap;
+
+                @include breakpoint(small-only) {
+                    font-size: 10px;
+                    padding: 4px 10px;
+                }
             }
             .resume-btn {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 color: $primary-text-color;
-                background: $white;
+                // background: $white;
                 border: 1px solid $primary-text-color;
                 padding: 10px 20px;
                 border-radius: 8px;
                 font-weight: 600;
+                width: fit-content;
+                text-wrap: nowrap;
+
+                @include breakpoint(small-only) {
+                    font-size: 10px;
+                    padding: 4px 10px;
+                }
             }
         }
     }
