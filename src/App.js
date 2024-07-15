@@ -26,18 +26,22 @@ function App() {
     scrollYRef.current = clampedScrollY;
   };
 
+  const handleScrollToPage = (page) => {
+    const scrollTo = page * window.innerWidth;
+    setScrollY(scrollTo);
+    scrollYRef.current = scrollTo;
+  };
+
   const handleScrollEnd = () => {
     let windowWidth = window.innerWidth;
 
     if (scrollYRef.current >= windowWidth * 3.5) {
       setScrollY(windowWidth * 4); // Scroll to PersonalProject
       scrollYRef.current = windowWidth * 4;
-    } 
-    else if (scrollYRef.current >= windowWidth * 2.5) {
+    } else if (scrollYRef.current >= windowWidth * 2.5) {
       setScrollY(windowWidth * 3); // Scroll to Experience
       scrollYRef.current = windowWidth * 3;
-    } 
-    else if (scrollYRef.current >= windowWidth * 1.5) {
+    } else if (scrollYRef.current >= windowWidth * 1.5) {
       setScrollY(windowWidth * 2); // Scroll to Skills
       scrollYRef.current = windowWidth * 2;
     } else if (scrollYRef.current >= windowWidth * 0.5) {
@@ -118,14 +122,14 @@ function App() {
   });
 
   const experiencePageProps = useSpring({
-    transform: `translateX(${Math.min(3 * window.innerWidth - scrollY, 2*window.innerWidth)}px)`,
+    transform: `translateX(${Math.min(3 * window.innerWidth - scrollY, 2 * window.innerWidth)}px)`,
     config: { tension: 210, friction: 20 },
     opacity: scrollY > window.innerWidth ? 2 : 0,
     zIndex: scrollY > window.innerWidth ? 2 : 0,
   });
 
   const personalProjectProps = useSpring({
-    transform: `translateX(${Math.min(4 * window.innerWidth - scrollY, 3*window.innerWidth)}px)`,
+    transform: `translateX(${Math.min(4 * window.innerWidth - scrollY, 3 * window.innerWidth)}px)`,
     config: { tension: 210, friction: 20 },
     opacity: scrollY > window.innerWidth ? 3 : 0,
     zIndex: scrollY > window.innerWidth ? 3 : 0,
@@ -133,7 +137,7 @@ function App() {
 
   return (
     <div style={{ overflow: 'hidden', position: 'relative', height: '100vh' }}>
-      <Navbar handleScroll={handleScroll} />
+      <Navbar handleScrollToPage={handleScrollToPage} />
       <animated.div
         style={{
           ...homePageProps,
@@ -154,7 +158,7 @@ function App() {
         }}
         ref={aboutRef}
       >
-        <Aboutme 
+        <Aboutme
           windowWidth={window.innerWidth}
           scrollY={scrollY}
           scrollYRef={scrollYRef}
