@@ -8,22 +8,22 @@ const Aboutme = ({ scrollY, windowWidth, scrollYRef }) => {
   const { isMobile } =useBreakpoints();
 
   const [about, setAbout] = useState(true);
-  useEffect(() => {
-    if (scrollYRef.current <= windowWidth * 1.5 || scrollYRef.current >= windowWidth * 2.5) {
-      setTimeout(() => {
-        setAbout(false);
-      }, 2000);
-    } else {
-      setTimeout(() => {
-        setAbout(true);
-      }, 2000);
-    }
-  }, [scrollYRef, windowWidth, about]);
+  // useEffect(() => {
+  //   if (scrollYRef.current <= windowWidth * 1.5 || scrollYRef.current >= windowWidth * 2.5) {
+  //     setTimeout(() => {
+  //       setAbout(false);
+  //     }, 2000);
+  //   } else {
+  //     setTimeout(() => {
+  //       setAbout(true);
+  //     }, 2000);
+  //   }
+  // }, [scrollYRef, windowWidth, about]);
   return (
     <>
-      {about ?
-        <h1>ABOUT</h1>
-        :
+      {/* {about ? */}
+        {/* <h1>ABOUT</h1> */}
+        {/* : */}
         <div className='about-main-container'>
             {isMobile &&
               <div className='aboutme-btn'>
@@ -54,7 +54,7 @@ const Aboutme = ({ scrollY, windowWidth, scrollYRef }) => {
             <p className='aboutme-content'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, laboriosam minus eaque vitae veritatis numquam rerum repudiandae quibusdam. Illum corrupti enim eligendi quod et nihil nulla accusantium quidem provident amet?</p>
           </div>
         </div>
-      }
+      {/* } */}
     </>
   )
 }

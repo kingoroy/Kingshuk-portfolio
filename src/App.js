@@ -14,6 +14,8 @@ function App() {
   const homeRef = useRef();
   const aboutRef = useRef();
   const skillRef = useRef();
+  const experienceRef = useRef();
+  const personalProjectRef = useRef();
   const scrollTimeoutRef = useRef(null);
 
   const handleScroll = (deltaY) => {
@@ -23,15 +25,15 @@ function App() {
     scrollYRef.current = clampedScrollY;
   };
 
-  let windowWidth = window.innerWidth;
   const handleScrollEnd = () => {
+    let windowWidth = window.innerWidth;
 
     if (scrollYRef.current >= windowWidth * 3.5) {
-      setScrollY(windowWidth * 4); // Scroll to Skills
+      setScrollY(windowWidth * 4); // Scroll to PersonalProject
       scrollYRef.current = windowWidth * 4;
     } 
     else if (scrollYRef.current >= windowWidth * 2.5) {
-      setScrollY(windowWidth * 3); // Scroll to Skills
+      setScrollY(windowWidth * 3); // Scroll to Experience
       scrollYRef.current = windowWidth * 3;
     } 
     else if (scrollYRef.current >= windowWidth * 1.5) {
@@ -45,6 +47,7 @@ function App() {
       scrollYRef.current = 0;
     }
   };
+
   useEffect(() => {
     const onScroll = (e) => {
       e.preventDefault();
@@ -61,10 +64,17 @@ function App() {
       }, 150);
     };
 
+    const onTouchMove = (e) => {
+      e.preventDefault();
+      handleScroll(e.touches[0].clientY - (scrollYRef.current + window.innerHeight / 2));
+    };
+
     window.addEventListener('wheel', onScroll, { passive: false });
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
 
     return () => {
       window.removeEventListener('wheel', onScroll);
+      window.removeEventListener('touchmove', onTouchMove);
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
@@ -129,7 +139,7 @@ function App() {
         ref={aboutRef}
       >
         <Aboutme 
-          windowWidth={windowWidth}
+          windowWidth={window.innerWidth}
           scrollY={scrollY}
           scrollYRef={scrollYRef}
         />
@@ -152,7 +162,7 @@ function App() {
           width: '100%',
           height: '100%',
         }}
-        ref={skillRef}
+        ref={experienceRef}
       >
         <Experience />
       </animated.div>
@@ -163,7 +173,7 @@ function App() {
           width: '100%',
           height: '100%',
         }}
-        ref={skillRef}
+        ref={personalProjectRef}
       >
         <PersonalProject />
       </animated.div>
