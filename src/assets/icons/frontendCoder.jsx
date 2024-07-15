@@ -1,6 +1,80 @@
 import React from "react";
-
+import {motion} from 'framer-motion';
 const frontendCoder=()=> {
+  const lineAnimation = {
+    hidden: { opacity: 0, strokeDashoffset: 1000 },
+    visible: {
+      opacity: 1,
+      strokeDashoffset: 0,
+      transition: {
+        duration: 2,
+        ease: 'easeInOut',
+        repeat: Infinity,
+        repeatType: 'reverse',
+        delay: 0.5 // Add delay for staggered effect
+      }
+    }
+  };
+
+  const lineAnimation2 = {
+    hidden: { opacity: 0, strokeDashoffset: 1000 },
+    visible: {
+      opacity: 1,
+      strokeDashoffset: 0,
+      transition: {
+        duration: 1,
+        ease: 'easeInOut',
+        repeat: Infinity,
+        repeatType: 'reverse',
+        delay: 0.2 // Add delay for staggered effect
+      }
+    }
+  };
+
+  const lineAnimation3 = {
+    hidden: { opacity: 0, strokeDashoffset: 1000 },
+    visible: {
+      opacity: 1,
+      strokeDashoffset: 0,
+      transition: {
+        duration: 10,
+        ease: 'easeInOut',
+        repeat: Infinity,
+        repeatType: 'reverse',
+        delay: 0.1 // Add delay for staggered effect
+      }
+    }
+  };
+
+  const lineAnimation4 = {
+    hidden: { opacity: 0, strokeDashoffset: 1000 },
+    visible: {
+      opacity: 1,
+      strokeDashoffset: 0,
+      transition: {
+        duration: 2,
+        ease: 'easeInOut',
+        repeat: Infinity,
+        repeatType: 'reverse',
+        delay: 0.5 // Add delay for staggered effect
+      }
+    }
+  };
+
+  const lineAnimation5 = {
+    hidden: { opacity: 0, strokeDashoffset: 1000 },
+    visible: {
+      opacity: 1,
+      strokeDashoffset: 0,
+      transition: {
+        duration: 2,
+        ease: 'easeInOut',
+        repeat: Infinity,
+        repeatType: 'reverse',
+        delay: 0.5 // Add delay for staggered effect
+      }
+    }
+  };
   return (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 3170 2318">
       <path
@@ -318,181 +392,96 @@ const frontendCoder=()=> {
         fill="#1E2128"
         d="M2574.44 725.37c-7.41 0-14.91-1.37-22.14-4.2-23.32-9.12-38.38-31.18-38.38-56.22v-81.56c-50.4-10.63-88.12-55.84-88.12-108.48V106.75c0-48.31 39.3-87.6 87.61-87.6h532.68c48.31 0 87.61 39.3 87.61 87.6v391.48c0 48.3-39.3 87.6-87.61 87.6h-316.61l-110.83 120.06c-11.73 12.69-27.75 19.48-44.21 19.48zM2513.4 49.13c-31.76 0-57.61 25.84-57.61 57.6v368.16c0 41.82 32.65 77.21 74.33 80.58 7.79.63 13.79 7.13 13.79 14.95v94.51c0 15.28 9.98 24.63 19.31 28.28 9.34 3.65 23 3.55 33.37-7.69l115.28-124.89c2.84-3.08 6.84-4.83 11.02-4.83h323.18c31.76 0 57.61-25.84 57.61-57.6V106.72c0-31.76-25.84-57.6-57.61-57.6H2513.4v.01z"
       ></path>
+         <path
+        fill="#1E2128"
+        d="M2574.44 725.37c-7.41 0-14.91-1.37-22.14-4.2-23.32-9.12-38.38-31.18-38.38-56.22v-81.56c-50.4-10.63-88.12-55.84-88.12-108.48V106.75c0-48.31 39.3-87.6 87.61-87.6h532.68c48.31 0 87.61 39.3 87.61 87.6v391.48c0 48.3-39.3 87.6-87.61 87.6h-316.61l-110.83 120.06c-11.73 12.69-27.75 19.48-44.21 19.48zM2513.4 49.13c-31.76 0-57.61 25.84-57.61 57.6v368.16c0 41.82 32.65 77.21 74.33 80.58 7.79.63 13.79 7.13 13.79 14.95v94.51c0 15.28 9.98 24.63 19.31 28.28 9.34 3.65 23 3.55 33.37-7.69l115.28-124.89c2.84-3.08 6.84-4.83 11.02-4.83h323.18c31.76 0 57.61-25.84 57.61-57.6V106.72c0-31.76-25.84-57.6-57.61-57.6H2513.4v.01z"
+      />
       <path
         fill="#1E2128"
         d="M3078.51 48.42c-11.4 144.45-274.7 382.99-380.42 473.31-29.55 25.25-54.91 55.01-75.23 88.14l-61.7 100.57 37.19-9.7L2714.44 571l355.11-6.51 56.58-49.44V91.27l-47.62-42.85z"
         opacity="0.2"
-      ></path>
+      />
       <path
         fill="#3C4A59"
         d="M3006.31 491.78h-456.04c-17.38 0-31.48-14.09-31.48-31.48V130.7c0-13.21 10.71-23.93 23.93-23.93h471.14c13.21 0 23.93 10.71 23.93 23.93v329.6c0 17.39-14.1 31.48-31.48 31.48z"
-      ></path>
+      />
       <path
         fill="#1E2128"
-        d="M3006.31 501.31h-456.04c-22.61 0-41-18.39-41-41v-329.6c0-18.44 15-33.45 33.45-33.45h471.14c18.44 0 33.45 15.01 33.45 33.45v329.6c0 22.6-18.39 41-41 41zM2542.72 116.3c-7.94 0-14.4 6.46-14.4 14.4v329.6c0 12.1 9.85 21.95 21.95 21.95h456.04c12.1 0 21.96-9.85 21.96-21.95V130.7c0-7.94-6.46-14.4-14.4-14.4h-471.15z"
-      ></path>
+        d="M3006.31 501.31h-456.04c-22.61 0-41-18.39-41-41v-329.6c0-18.44 15-33.45 33.45-33.45h471.14c18.54 0 33.63 15.01 33.63 33.45v329.6c0 22.6-18.39 41-41 41zM2542.72 116.3c-7.94 0-14.4 6.46-14.4 14.4v329.6c0 12.1 9.85 21.95 21.95 21.95h456.04c12.1 0 21.96-9.85 21.96-21.95V130.7c0-7.94-6.46-14.4-14.4-14.4h-471.15z"
+      />
       <path
         fill="#fff"
         d="M2537.84 460.3V130.7c0-7.94 6.46-14.4 14.41-14.4h-9.52c-7.94 0-14.41 6.46-14.41 14.4v329.6c0 12.11 9.85 21.95 21.96 21.95h9.52c-12.11.01-21.96-9.84-21.96-21.95z"
         opacity="0.4"
-      ></path>
+      />
       <path
         fill="#E0E0E0"
         d="M3037.79 129.56c0-12.58-10.79-22.78-24.11-22.78H2542.9c-13.32 0-24.11 10.2-24.11 22.78v37.76h518.99v-37.76h.01z"
-      ></path>
+      />
       <path
         fill="#1E2128"
         d="M3037.79 176.84H2518.8c-5.26 0-9.52-4.27-9.52-9.52v-37.76c0-17.81 15.09-32.31 33.63-32.31h470.77c18.54 0 33.63 14.49 33.63 32.31v37.76c0 5.26-4.26 9.52-9.52 9.52zm-509.48-19.04h499.95v-28.24c0-7.31-6.55-13.26-14.59-13.26H2542.9c-8.04 0-14.59 5.95-14.59 13.26v28.24z"
-      ></path>
-      <path
-        fill="#14E956"
-        d="M2760.22 220.38h-187.23c-4.14 0-7.5-3.36-7.5-7.5 0-4.14 3.36-7.5 7.5-7.5h187.23c4.14 0 7.5 3.36 7.5 7.5 0 4.14-3.36 7.5-7.5 7.5z"
-        className="a-one"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        data-svg-origin="2666.60498046875 212.8800048828125"
-        opacity="0.282"
-      ></path>
-      <path
-        fill="#F75C4C"
-        d="M2686.32 267.34h-113.33c-4.14 0-7.5-3.36-7.5-7.5 0-4.14 3.36-7.5 7.5-7.5h113.33c4.14 0 7.5 3.36 7.5 7.5 0 4.14-3.36 7.5-7.5 7.5z"
-        className="a-two"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        data-svg-origin="2629.655029296875 259.8399963378906"
-        opacity="0.718"
-      ></path>
-      <path
-        fill="#EEF7FB"
-        d="M2957.31 267.34h-229.93c-4.14 0-7.5-3.36-7.5-7.5 0-4.14 3.36-7.5 7.5-7.5h229.93c4.14 0 7.5 3.36 7.5 7.5 0 4.14-3.36 7.5-7.5 7.5z"
-        className="a-three"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        data-svg-origin="2842.344970703125 259.8399963378906"
-        opacity="0.282"
-      ></path>
-      <path
-        fill="#14E956"
-        d="M2799.64 311.92h-226.65c-4.14 0-7.5-3.36-7.5-7.5 0-4.14 3.36-7.5 7.5-7.5h226.65c4.14 0 7.5 3.36 7.5 7.5 0 4.14-3.36 7.5-7.5 7.5z"
-        className="a-four"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        data-svg-origin="2686.31494140625 304.4200134277344"
-        opacity="0.718"
-      ></path>
-      <path
-        fill="#FFEB3B"
-        d="M2911.32 311.92h-72.27c-4.14 0-7.5-3.36-7.5-7.5 0-4.14 3.36-7.5 7.5-7.5h72.27c4.14 0 7.5 3.36 7.5 7.5 0 4.14-3.36 7.5-7.5 7.5z"
-        className="a-five"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        data-svg-origin="2875.18505859375 304.4200134277344"
-        opacity="0.282"
-      ></path>
-      <path
-        fill="#EEF7FB"
-        d="M2878.48 354.76H2573c-4.14 0-7.5-3.36-7.5-7.5 0-4.14 3.36-7.5 7.5-7.5h305.48c4.14 0 7.5 3.36 7.5 7.5 0 4.14-3.36 7.5-7.5 7.5z"
-        className="a-six"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        data-svg-origin="2725.739990234375 347.260009765625"
-        opacity="0.718"
-      ></path>
-      <path
-        fill="#BA68C8"
-        d="M2681.39 398.7h-108.4c-4.14 0-7.5-3.36-7.5-7.5 0-4.14 3.36-7.5 7.5-7.5h108.4c4.14 0 7.5 3.36 7.5 7.5 0 4.14-3.36 7.5-7.5 7.5z"
-        className="a-seven"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        data-svg-origin="2627.18994140625 391.20001220703125"
-        opacity="0.282"
-      ></path>
-      <path
-        fill="#14E956"
-        d="M2931.03 398.7h-206.94c-4.14 0-7.5-3.36-7.5-7.5 0-4.14 3.36-7.5 7.5-7.5h206.94c4.14 0 7.5 3.36 7.5 7.5 0 4.14-3.35 7.5-7.5 7.5z"
-        className="a-eight"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        data-svg-origin="2827.56005859375 391.20001220703125"
-        opacity="0.718"
-      ></path>
-      <path
-        fill="#EEF7FB"
-        d="M2825.92 447.39H2573c-4.14 0-7.5-3.36-7.5-7.5 0-4.14 3.36-7.5 7.5-7.5h252.92c4.14 0 7.5 3.36 7.5 7.5 0 4.15-3.36 7.5-7.5 7.5z"
-        className="a-nine"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        data-svg-origin="2699.4599609375 439.8900146484375"
-        opacity="0.282"
-      ></path>
-      <path
-        fill="#C04E4D"
-        d="M2571.348 142.77a9.092 9.092 0 10-.001-18.185 9.092 9.092 0 00.001 18.185z"
-        className="b-one"
-        data-svg-origin="2573.760009765625 136.09000396728516"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        opacity="0.718"
-      ></path>
-      <path
-        fill="#5D4D30"
-        d="M2599.928 140.666a6.989 6.989 0 100-13.977 6.989 6.989 0 000 13.977z"
-        className="b-two"
-        data-svg-origin="2602.3399658203125 136.09000396728516"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        opacity="0.282"
-      ></path>
-      <path
-        fill="#089A43"
-        d="M2628.508 142.77a9.092 9.092 0 10-.001-18.185 9.092 9.092 0 00.001 18.185z"
-        className="b-three"
-        data-svg-origin="2630.919921875 136.09000396728516"
-        style={{
-          WebkitTransformOrigin: 0,
-          MsTransformOrigin: 0,
-          transformOrigin: 0,
-        }}
-        opacity="0.718"
-      ></path>
-      <path
-        fill="#fff"
-        d="M2873.82 49.468L2812.29.355 2669.72 178.99l61.53 49.112 142.57-178.635zM2986.99 30.54l-31.85-25.425-142.57 178.634 31.85 25.427 142.57-178.635z"
-        opacity="0.5"
-      ></path>
+      />
+      <motion.line
+        x1="2680"
+        y1="200"
+        x2="3000"
+        y2="200"
+        stroke="#14E956"
+        strokeWidth="10"
+        strokeLinecap="round"
+        variants={lineAnimation2}
+        initial="hidden"
+        animate="visible"
+      />
+      <motion.line
+        x1="2680"
+        y1="250"
+        x2="3000"
+        y2="250"
+        stroke="#F75C4C"
+        strokeWidth="10"
+        strokeLinecap="round"
+        variants={lineAnimation3}
+        initial="hidden"
+        animate="visible"
+      />
+      <motion.line
+        x1="2680"
+        y1="300"
+        x2="3000"
+        y2="300"
+        stroke="#F3C53C"
+        strokeWidth="10"
+        strokeLinecap="round"
+        variants={lineAnimation}
+        initial="hidden"
+        animate="visible"
+      />
+      <motion.line
+        x1="2680"
+        y1="350"
+        x2="3000"
+        y2="350"
+        stroke="#4C79F3"
+        strokeWidth="10"
+        strokeLinecap="round"
+        variants={lineAnimation4}
+        initial="hidden"
+        animate="visible"
+      />
+      <motion.line
+        x1="2680"
+        y1="400"
+        x2="3000"
+        y2="400"
+        stroke="#F4B6CF"
+        strokeWidth="10"
+        strokeLinecap="round"
+        variants={lineAnimation5}
+        initial="hidden"
+        animate="visible"
+      />
       <path
         fill="#1E2128"
         d="M3025.9 109.13s-184.53 371.36-504.02 357.69l16.26 26.42h475.57l24.39-22.36-.05-339.14-12.15-22.61z"
