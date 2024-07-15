@@ -14,3 +14,41 @@ html, body {
     font-family: "Lato", sans-serif;
     font-optical-sizing: auto;
 }
+
+.title {
+    font-size: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: $primary-text-color;
+    height: 100vh;
+
+    @include breakpoint(small-only) {
+        font-size: 60px;
+        align-content: center;
+    }
+}
+
+.exptitle {
+    font-size: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: $primary-text-color;
+    height: 100vh;
+
+    @include breakpoint(small-only) {
+        font-size: 50px;
+        align-content: center;
+    }
+}
+.inviewAnalyzer {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    left: 50%;
+    top: 50%;
+}

@@ -8,6 +8,7 @@
     padding: 0px 200px;
     text-align: center;
     gap: 30px;
+    align-items: center;
 
     
     @include breakpoint(small-only) {
