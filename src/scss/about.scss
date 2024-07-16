@@ -12,7 +12,7 @@
     @include breakpoint(small-only) {
         flex-direction: column;
         justify-content: start;
-        padding: 120px 20px;
+        padding: 150px 20px 0px 20px;
         gap: 10px;
     }
 
