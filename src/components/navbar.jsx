@@ -4,7 +4,7 @@ import ThemeToggle from './themeToggle';
 import { FaBars } from 'react-icons/fa';
 import useBreakpoints from './responsive';
 
-const Navbar = ({ handleScrollToPage }) => {
+const Navbar = ({ handleScrollToPage, splashScreenVisible }) => {
   const { isMobile } = useBreakpoints();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
@@ -12,8 +12,8 @@ const Navbar = ({ handleScrollToPage }) => {
   };
 
   return (
-    <div className='navbar-main-container'>
-      <div style={{marginLeft: '-20px'}}>
+    <div className='navbar-main-container' style={{display: splashScreenVisible ? 'none' : 'flex'}}>
+      <div style={{marginLeft: isMobile ? '-10px' : '-20px'}} className='navLogoWrapper'>
         <PortfolioLogo size={isMobile ? 8 : 14} />
         </div>
       {isMobile ? (

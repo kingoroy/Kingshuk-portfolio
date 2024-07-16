@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FrontendCoder } from '../assets/icons';
+import { FrontendCoder, HiCoding } from '../assets/icons';
 import { AnimatePresence, motion, useAnimation, useInView } from 'framer-motion';
 import useBreakpoints from './responsive';
 import SmallDescription from './small-description';
 import MyName from './myname';
-
+import animatedData from '../assets/icons/hello.json';
+import Lottie from 'lottie-react';
+// import {hiBoy} from '../assets/pictures/'
 const HomePage = () => {
   const { isMobile } = useBreakpoints();
   const ref = useRef(null);
@@ -118,7 +120,10 @@ const HomePage = () => {
               initial="initial"
               animate="animate"
             >
-              <FrontendCoder />
+              {/* <FrontendCoder /> */}
+              {/* <img src={hi} */}
+              {/* <HiCoding /> */}
+              <Lottie animationData={animatedData} loop={true} />
             </motion.div>
           </div>
         </AnimatePresence>

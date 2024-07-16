@@ -1,0 +1,26 @@
+.splashScreenContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    height: 100vh;
+    @include breakpoint(small-only) {
+       flex-direction: column;
+       }
+    .splashLotieWrapper {
+        height: 400px;
+        width: 400px;
+
+        @include breakpoint(small-only) {
+            height: 200px;
+            width: 200px;
+        }
+    }
+    .portfolioLogo {
+        margin-left: -100px;
+
+        @include breakpoint(small-only) {
+            margin: 0;
+        }
+    }
+}

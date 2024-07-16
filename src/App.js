@@ -7,9 +7,11 @@ import Skills from './components/Skills';
 import Footer from './components/footer';
 import Experience from './components/experience';
 import PersonalProject from './components/personalProject';
+import SplashScreen from './components/splashScreen';
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
+  const [splashScreenVisible, setSplashScreenVisible] = useState(true);
   const scrollYRef = useRef(scrollY);
   const homeRef = useRef();
   const aboutRef = useRef();
@@ -135,9 +137,17 @@ function App() {
     zIndex: scrollY > window.innerWidth ? 3 : 0,
   });
 
+  useEffect(()=>{
+    setTimeout(() => {
+      setSplashScreenVisible(false);
+    }, 2000);
+  })
   return (
+    <>
+    <Navbar handleScrollToPage={handleScrollToPage} splashScreenVisible={splashScreenVisible}/>
+      <SplashScreen  splashScreenVisible={splashScreenVisible}/> 
+    {!splashScreenVisible &&
     <div style={{ overflow: 'hidden', position: 'relative', height: '100vh' }}>
-      <Navbar handleScrollToPage={handleScrollToPage} />
       <animated.div
         style={{
           ...homePageProps,
@@ -198,7 +208,9 @@ function App() {
         <PersonalProject />
       </animated.div>
       <Footer />
-    </div>
+    </div>}
+    </>
+
   );
 }
 
