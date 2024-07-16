@@ -4,6 +4,7 @@ import kingshukAboutImage from '../assets/pictures/kingshukAboutImg.jpg';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
 import useBreakpoints from './responsive';
+import SmallDescription from './small-description';
 
 const Aboutme = () => {
   const { isMobile } = useBreakpoints();
@@ -12,9 +13,11 @@ const Aboutme = () => {
   const leftSideControls = useAnimation();
   const rightSideControls = useAnimation();
   const [showContent, setShowContent] = useState(false);
+  const titleTextTimeout = isMobile ? 1000 : 2000;
+  const titleTextDuration = isMobile ? 1 : 2;
+
   useEffect(() => {
     if (inView) {
-      // First, animate out the "About Me" text
       setShowContent(false);
       leftSideControls.start({
         opacity: 0,
@@ -27,7 +30,6 @@ const Aboutme = () => {
         transition: { duration: 0.5 },
       });
 
-      // After a delay, show the main content
       setTimeout(() => {
         setShowContent(true);
         leftSideControls.start({
@@ -40,7 +42,7 @@ const Aboutme = () => {
           x: 0,
           transition: { duration: 0.5, delay: 0.5 },
         });
-      }, 2000);  // Delay should match the duration of the "About Me" text exit animation
+      }, titleTextTimeout);
     } else {
       setShowContent(false);
     }
@@ -55,7 +57,7 @@ const Aboutme = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 2 }}
+            transition={{ duration: titleTextDuration }}
           >
             About Me
           </motion.div>
@@ -67,14 +69,18 @@ const Aboutme = () => {
           <div className="about-main-container">
             <motion.div
               className='aboutme-btn'
+              initial={{ opacity: 0, scale: 0 }}
               animate={{
+                opacity: 1,
+                scale: 1,
                 rotateY: [0, 360, 360],
               }}
               transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}>
+                opacity: { duration: 1 },
+                scale: { duration: 1 },
+                rotateY: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+              }}
+            >
               ABOUT ME
             </motion.div>
             <div className='aboutmeContentWrapper'>
@@ -82,7 +88,7 @@ const Aboutme = () => {
                 className="aboutLeftside"
                 initial={{ opacity: 0, x: '-100%' }}
                 animate={leftSideControls}
-                exit={{ opacity: 0, x: '0', y: '100%', scale: 0, transform: { duration: 0.3 } }}
+                exit={{ opacity: 0, x: '0', y: '100%', scale: 0, transition: { duration: 0.3 } }}
               >
                 <img
                   src={kingshukAboutImage}
@@ -92,9 +98,9 @@ const Aboutme = () => {
                 <div className="aboutSocialWrapper">
                   <p>Kingshuk Roy</p>
                   <div>
-                    <FaLinkedin />
-                    <FaInstagram />
-                    <FaGithub />
+                    <div><FaLinkedin /></div>
+                    <div><FaInstagram /></div>
+                    <div><FaGithub /></div>
                   </div>
                 </div>
               </motion.div>
@@ -104,15 +110,20 @@ const Aboutme = () => {
                 animate={rightSideControls}
                 exit={{ opacity: 0, x: '100%', scale: 0 }}
               >
-                <div>
-                  <h1>Hey!! Whatsapp.</h1>
+                <div style={{ fontSize: '35px' }}>
+                  <SmallDescription text='Hey!! Whatsapp.' />
                 </div>
                 <p className="aboutme-content">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum,
-                  laboriosam minus eaque vitae veritatis numquam rerum repudiandae
-                  quibusdam. Illum corrupti enim eligendi quod et nihil nulla accusantium
-                  quidem provident amet?
+                  I am a Senior Systems Engineer at Infosys with over 2.4 years of experience as a Frontend Developer. I specialize in React, Redux, and UI design, with a passion for creating innovative and user-friendly web applications. My focus is on delivering high-quality frontend solutions that enhance user experience and meet client needs.
                 </p>
+                <div className="education-section">
+                  <h3>Educational Background:</h3>
+                  <ul>
+                    <li>B.Tech (2021) – Grade A</li>
+                    <li>Higher Secondary (2017) – Grade A</li>
+                    <li>Secondary (2015) – Grade A+</li>
+                  </ul>
+                </div>
               </motion.div>
             </div>
           </div>

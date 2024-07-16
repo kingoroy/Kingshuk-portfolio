@@ -13,7 +13,9 @@ const Navbar = ({ handleScrollToPage }) => {
 
   return (
     <div className='navbar-main-container'>
-      <PortfolioLogo size={isMobile ? 8 : 14} />
+      <div style={{marginLeft: '-20px'}}>
+        <PortfolioLogo size={isMobile ? 8 : 14} />
+        </div>
       {isMobile ? (
         <div className='mobilenavRight'>
           <ThemeToggle />

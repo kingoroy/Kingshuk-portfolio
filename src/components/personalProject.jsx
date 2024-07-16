@@ -12,6 +12,8 @@ const PersonalProject = () => {
   const leftSideControls = useAnimation();
   const rightSideControls = useAnimation();
   const [showContent, setShowContent] = useState(false);
+  const titleTextTimeout = isMobile ? 1000 : 2000;
+  const titleTextDuration = isMobile ? 1 : 2;
 
   useEffect(() => {
     if (inView) {
@@ -41,7 +43,7 @@ const PersonalProject = () => {
           x: 0,
           transition: { duration: 0.5, delay: 0.5 },
         });
-      }, 2000);  // Delay should match the duration of the "PROJECT" text exit animation
+      }, titleTextTimeout);  // Delay should match the duration of the "PROJECT" text exit animation
     } else {
       setShowContent(false);
     }
@@ -56,7 +58,7 @@ const PersonalProject = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 2 }}
+            transition={{ duration: titleTextDuration }}
           >
             PROJECT
           </motion.div>
@@ -66,15 +68,18 @@ const PersonalProject = () => {
       {showContent && (
         <AnimatePresence>
           <div className='project-main-container'>
-            <motion.div
+          <motion.div
               className='aboutme-btn'
+              initial={{opacity: 0, scale: 0}}
               animate={{
+                opacity: 1,
+                scale: 1,
                 rotateY: [0, 360, 360],
               }}
               transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut"
+                opacity: { duration: 1 },
+                scale: { duration: 1 },
+                rotateY: { duration: 5, repeat: Infinity, ease: "easeInOut" }
               }}>
               PROJECT
             </motion.div>

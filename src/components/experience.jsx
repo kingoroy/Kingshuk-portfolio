@@ -1,14 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
 import kingshukExperienceImage from '../assets/pictures/kingshukExperienceImage.jpg';
+import useBreakpoints from './responsive';
 
 const Experience = () => {
+  const {isMobile} = useBreakpoints();
   const ref = useRef(null);
   const inView = useInView(ref);
   const leftSideControls = useAnimation();
   const rightSideControls = useAnimation();
   const [showContent, setShowContent] = useState(false);
-
+  const titleTextTimeout = isMobile ? 1000 : 2000;
+  const titleTextDuration = isMobile ? 1 : 2;
   useEffect(() => {
     if (inView) {
       // Animate out the "Experience" text
@@ -37,7 +40,7 @@ const Experience = () => {
           x: 0,
           transition: { duration: 0.5, delay: 0.5 },
         });
-      }, 2000);  // Delay should match the duration of the "Experience" text exit animation
+      }, titleTextTimeout);
     } else {
       setShowContent(false);
     }
@@ -52,7 +55,7 @@ const Experience = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 2 }}
+            transition={{ duration: titleTextDuration }}
           >
             EXPERIENCE
           </motion.div>
@@ -64,13 +67,16 @@ const Experience = () => {
           <div className='experience-main-container'>
           <motion.div
               className='aboutme-btn'
+              initial={{opacity: 0, scale: 0}}
               animate={{
+                opacity: 1,
+                scale: 1,
                 rotateY: [0, 360, 360],
               }}
               transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut"
+                opacity: { duration: 1 },
+                scale: { duration: 1 },
+                rotateY: { duration: 5, repeat: Infinity, ease: "easeInOut" }
               }}>
               EXPERIENCE
             </motion.div>

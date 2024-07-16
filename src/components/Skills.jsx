@@ -3,6 +3,8 @@ import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion'
 import { FaReact, FaHtml5, FaCss3Alt, FaSass, FaBootstrap, FaGithubSquare, FaGitAlt, FaFigma } from 'react-icons/fa';
 import { RiJavascriptFill, RiNpmjsFill } from 'react-icons/ri';
 import { SiRedux, SiExpress, SiMongodb, SiJira } from 'react-icons/si';
+import useBreakpoints from './responsive';
+import SmallDescription from './small-description';
 
 const skills = [
   { icon: <FaReact color='var(--primary-text-color)' />, name: 'React' },
@@ -22,11 +24,14 @@ const skills = [
 ];
 
 const Skills = () => {
+  const { isMobile } = useBreakpoints();
   const ref = useRef(null);
   const inView = useInView(ref);
   const titleControls = useAnimation();
   const skillsControls = useAnimation();
   const [showContent, setShowContent] = useState(false);
+  const titleTextTimeout = isMobile ? 1000 : 2000;
+  const titleTextDuration = isMobile ? 1 : 2;
 
   useEffect(() => {
     if (inView) {
@@ -46,7 +51,7 @@ const Skills = () => {
           x: 0,
           transition: { duration: 0.5, delay: 0.5 },
         });
-      }, 2000);  // Delay should match the duration of the "SKILLS" text exit animation
+      }, titleTextTimeout);  // Delay should match the duration of the "SKILLS" text exit animation
     } else {
       setShowContent(false);
     }
@@ -55,13 +60,13 @@ const Skills = () => {
   return (
     <>
       <AnimatePresence>
-      {!inView && (
+        {!inView && (
           <motion.div
             className="title"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 2 }}
+            transition={{ duration: titleTextDuration }}
           >
             SKILLS
           </motion.div>
@@ -71,27 +76,36 @@ const Skills = () => {
       {showContent && (
         <AnimatePresence>
           <div className='skill-main-container'>
-          <motion.div
-            className="skillTitleWrapper"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 2 }}
-          >
             <motion.div
-              className='aboutme-btn'
-              animate={{
-                rotateY: [0, 360, 360],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}>
-              SKILLS
+              className="skillTitleWrapper"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 2 }}
+            >
+              <motion.div
+                className='aboutme-btn'
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  rotateY: [0, 360, 360],
+                }}
+                transition={{
+                  opacity: { duration: 1 },
+                  scale: { duration: 1 },
+                  rotateY: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+                }}>
+                SKILLS
+              </motion.div>
+              <h1 className='titleDescription'>
+                <SmallDescription text='Technologies and Skills I Utilize'
+                delay={0.2}
+                duration={0.2}
+                color='var(--grey-text-color)'
+                highlightColor='var(--primary-text-color)'
+                /></h1>
             </motion.div>
-            <h1 className='titleDescription'>The Skills, Tools, and Technologies I Generally Use:</h1>
-          </motion.div>
             <div className='skillContentWrapper'>
               <motion.div
                 className='skill-rightside-container'
