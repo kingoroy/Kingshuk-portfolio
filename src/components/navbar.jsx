@@ -28,7 +28,7 @@ const Navbar = ({ handleScrollToPage, splashScreenVisible }) => {
               <li onClick={() => { handleScrollToPage(1); setIsMenuOpen(false); }}>About me</li>
               <li onClick={() => { handleScrollToPage(2); setIsMenuOpen(false); }}>Skills</li>
               <li onClick={() => { handleScrollToPage(3); setIsMenuOpen(false); }}>Experience</li>
-              <li onClick={() => { handleScrollToPage(4); setIsMenuOpen(false); }}>Personal Project</li>
+              <li onClick={() => { handleScrollToPage(4); setIsMenuOpen(false); }}>Project</li>
             </ul>
           )}
         </div>
@@ -38,7 +38,7 @@ const Navbar = ({ handleScrollToPage, splashScreenVisible }) => {
           <li onClick={() => handleScrollToPage(1)}>About me</li>
           <li onClick={() => handleScrollToPage(2)}>Skills</li>
           <li onClick={() => handleScrollToPage(3)}>Experience</li>
-          <li onClick={() => handleScrollToPage(4)}>Personal Project</li>
+          <li onClick={() => handleScrollToPage(4)}>Project</li>
         </ul>
       )}
       {!isMobile && (
