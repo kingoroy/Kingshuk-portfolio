@@ -99,7 +99,7 @@ const Skills = () => {
                 SKILLS
               </motion.div>
               <h1 className='titleDescription'>
-                <SmallDescription text='Technologies and Skills I Utilize'
+                <SmallDescription text='Technologies and Skills'
                 delay={0.2}
                 duration={0.2}
                 color='var(--grey-text-color)'

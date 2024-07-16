@@ -111,19 +111,19 @@ const Aboutme = () => {
                 exit={{ opacity: 0, x: '100%', scale: 0 }}
               >
                 <div style={{ fontSize: '35px' }}>
-                  <SmallDescription text='Hey!! Whatsapp.' />
+                  <SmallDescription text='Hey Whats up!!' />
                 </div>
                 <p className="aboutme-content">
                   I am a Senior Systems Engineer at Infosys with over 2.4 years of experience as a Frontend Developer. I specialize in React, Redux, and UI design, with a passion for creating innovative and user-friendly web applications. My focus is on delivering high-quality frontend solutions that enhance user experience and meet client needs.
                 </p>
-                <div className="education-section">
+                {/* <div className="education-section">
                   <h3>Educational Background:</h3>
                   <ul>
                     <li>B.Tech (2021) – Grade A</li>
                     <li>Higher Secondary (2017) – Grade A</li>
                     <li>Secondary (2015) – Grade A+</li>
                   </ul>
-                </div>
+                </div> */}
               </motion.div>
             </div>
           </div>
