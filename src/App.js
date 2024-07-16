@@ -8,6 +8,7 @@ import Footer from './components/footer';
 import Experience from './components/experience';
 import PersonalProject from './components/personalProject';
 import SplashScreen from './components/splashScreen';
+import Contact from './components/contact';
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
@@ -148,6 +149,7 @@ function App() {
       <SplashScreen  splashScreenVisible={splashScreenVisible}/> 
     {!splashScreenVisible &&
     <div style={{ overflow: 'hidden', position: 'relative', height: '100vh' }}>
+      <Contact />
       <animated.div
         style={{
           ...homePageProps,

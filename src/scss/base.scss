@@ -27,6 +27,7 @@ html, body {
     @include breakpoint(small-only) {
         font-size: 60px;
         align-content: center;
+        margin-top: -40px;
     }
 }
 

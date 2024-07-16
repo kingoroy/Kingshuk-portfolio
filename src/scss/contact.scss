@@ -1,0 +1,89 @@
+.contact-floating-container, .contact-floating-container-arrow {
+    position: fixed;
+    z-index: 10;
+    bottom: 140px;
+    right: 60px;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    @include breakpoint(small-only) {
+        bottom: 40px;
+        right: 10px;
+        height: 60px;
+        width: 60px;
+    }
+}
+
+.contact-floating-container-arrow {
+    border: 1px solid $grey-border;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease-in-out;
+        transform: rotate(180deg);
+}
+.contact-form-container {
+    // @include glassMorphismTheme;
+    background: $portfolio-background;
+    width: 300px;
+    height: fit-content;
+    position: fixed;
+    bottom: 220px;
+    right: 120px;
+    z-index: 10;
+    border-radius: 50px 50px 0px 50px;
+    border: 1px solid $primary-text-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 30px 30px 30px;
+
+    @include breakpoint(small-only) {
+        bottom: 110px;
+        right: 50px;
+        width: 200px;
+        // height: 60px;
+        // width: 60px;
+    }
+    .contact-form-wrapper {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        &>input, textArea {
+            width: 93%;
+            background: transparent;
+            border: 1px solid $primary-text-color;
+            border-radius: 50px;
+            color: $primary-text-color;
+            outline: none;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            font-weight: 800;
+            &:focus {
+                outline: none;
+            }
+
+            &::placeholder {
+                color: $primary-text-color;
+            }
+        }
+
+        .formSubmitBtn {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border: none;
+            border-radius: 40px;
+            background: $primary-text-color;
+            color: white;
+            justify-content: center;
+            padding: 10px 20px;
+        }
+    }
+}

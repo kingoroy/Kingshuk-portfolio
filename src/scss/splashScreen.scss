@@ -6,6 +6,7 @@
     height: 100vh;
     @include breakpoint(small-only) {
        flex-direction: column;
+       margin-top: -40px;
        }
     .splashLotieWrapper {
         height: 400px;

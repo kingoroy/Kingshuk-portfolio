@@ -4,6 +4,7 @@ import { DesicartIcon } from '../assets/icons';
 import { TiAttachment } from "react-icons/ti";
 import { FaGithub } from "react-icons/fa";
 import useBreakpoints from './responsive';
+import { redirectDesicart, redirectDesicartGithub, redirectGithub } from './helper';
 
 const PersonalProject = () => {
   const { isMobile } = useBreakpoints();
@@ -104,10 +105,10 @@ const PersonalProject = () => {
                   </div>
                 </div>
                 <div className='linkWrapper'>
-                  <div><TiAttachment />
+                  <div onClick={redirectDesicart}><TiAttachment />
                     <p>Link Preview</p>
                   </div>
-                  <div><FaGithub />
+                  <div onClick={redirectDesicartGithub}><FaGithub />
                     <p>View Code</p>
                   </div>
                 </div>

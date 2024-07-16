@@ -106,8 +106,9 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
+                    gap: 2px;
+                    cursor: pointer;
                     &>p {
-                        cursor: pointer;
                         text-decoration: underline;
                         font-size: 12px;
                     }

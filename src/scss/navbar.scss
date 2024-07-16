@@ -113,7 +113,8 @@
     margin-left: auto;
     margin-right: auto;
     color: $black;
-
+    z-index: 10;
+    
     @include breakpoint(small-only) {
         justify-content: center;
         align-items: center;
@@ -124,5 +125,8 @@
         align-items: center;
         flex-direction: row;
         gap: 10px;
+    }
+    .footerLeftSide > *:only-child {
+        cursor: pointer;
     }
 }

@@ -110,7 +110,7 @@ const HomePage = () => {
                 </div>
               </div>
               <div className='resume-btn-container'>
-                <div className='contact-btn'>Contact Me</div>
+                {/* <div className='contact-btn'>Contact Me</div> */}
                 <div className='resume-btn'>Get Resume</div>
               </div>
             </motion.div>

@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
 import useBreakpoints from './responsive';
 import SmallDescription from './small-description';
+import { redirectGithub, redirectInstagram, redirectLinkedIn } from './helper';
 
 const Aboutme = () => {
   const { isMobile } = useBreakpoints();
@@ -98,9 +99,9 @@ const Aboutme = () => {
                 <div className="aboutSocialWrapper">
                   <p>Kingshuk Roy</p>
                   <div>
-                    <div><FaLinkedin /></div>
-                    <div><FaInstagram /></div>
-                    <div><FaGithub /></div>
+                    <div><FaLinkedin onClick={redirectLinkedIn}/></div>
+                    <div><FaInstagram onClick={redirectInstagram}/></div>
+                    <div><FaGithub onClick={redirectGithub}/></div>
                   </div>
                 </div>
               </motion.div>
