@@ -72,15 +72,28 @@ function App() {
     }
   };
 
+  const onTouchEnd = () => {
+    const pageThreshold = currentPage * pageWidth;
+    if (scrollYRef.current > pageThreshold + scrollThreshold) {
+      handleScrollToPage(currentPage + 1);
+    } else if (scrollYRef.current < pageThreshold - scrollThreshold) {
+      handleScrollToPage(currentPage - 1);
+    } else {
+      handleScrollToPage(currentPage);
+    }
+  };
+
   useEffect(() => {
     window.addEventListener('wheel', onWheel, { passive: false });
     window.addEventListener('touchstart', onTouchStart, { passive: false });
     window.addEventListener('touchmove', onTouchMove, { passive: false });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
 
     return () => {
       window.removeEventListener('wheel', onWheel);
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', onTouchEnd);
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
