@@ -13,6 +13,7 @@ import Contact from './components/contact';
 function App() {
   const [scrollY, setScrollY] = useState(0);
   const [splashScreenVisible, setSplashScreenVisible] = useState(true);
+  const [scrollDirection, setScrollDirection] = useState(null);
   const scrollYRef = useRef(scrollY);
   const homeRef = useRef();
   const aboutRef = useRef();
@@ -21,30 +22,65 @@ function App() {
   const personalProjectRef = useRef();
   const scrollTimeoutRef = useRef(null);
   const touchStartY = useRef(0);
-  const [currentPage, setCurrentPage] = useState(0);
-
-  const pageWidth = window.innerWidth;
-  const scrollThreshold = pageWidth / 2; // 50% of the page width
 
   const handleScroll = (deltaY) => {
     const newScrollY = scrollYRef.current + deltaY;
-    const clampedScrollY = Math.min(Math.max(newScrollY, 0), pageWidth * 4);
+    const clampedScrollY = Math.min(Math.max(newScrollY, 0), window.innerWidth * 4);
     setScrollY(clampedScrollY);
     scrollYRef.current = clampedScrollY;
 
-    // Check if scrollY has exceeded the scroll threshold
-    if (deltaY > 0 && clampedScrollY > (currentPage * pageWidth) + scrollThreshold) {
-      handleScrollToPage(currentPage + 1);
-    } else if (deltaY < 0 && clampedScrollY < (currentPage * pageWidth) - scrollThreshold) {
-      handleScrollToPage(currentPage - 1);
+    // Determine the scroll direction
+    if (deltaY > 0) {
+      setScrollDirection('down');
+    } else if (deltaY < 0) {
+      setScrollDirection('up');
     }
   };
 
   const handleScrollToPage = (page) => {
-    const clampedPage = Math.min(Math.max(page, 0), 4);
-    setScrollY(clampedPage * pageWidth);
-    setCurrentPage(clampedPage);
-    scrollYRef.current = clampedPage * pageWidth;
+    const scrollTo = page * window.innerWidth;
+    setScrollY(scrollTo);
+    scrollYRef.current = scrollTo;
+  };
+
+  const handleScrollEnd = () => {
+    let windowWidth = window.innerWidth;
+
+    if (scrollDirection === 'down') {
+      if (scrollYRef.current >= windowWidth * 3.1) {
+        setScrollY(windowWidth * 4); // Scroll to PersonalProject
+        scrollYRef.current = windowWidth * 4;
+      } else if (scrollYRef.current >= windowWidth * 2.1) {
+        setScrollY(windowWidth * 3); // Scroll to Experience
+        scrollYRef.current = windowWidth * 3;
+      } else if (scrollYRef.current >= windowWidth * 1.1) {
+        setScrollY(windowWidth * 2); // Scroll to Skills
+        scrollYRef.current = windowWidth * 2;
+      } else if (scrollYRef.current >= windowWidth * 0.1) {
+        setScrollY(windowWidth); // Scroll to About
+        scrollYRef.current = windowWidth;
+      } else {
+        setScrollY(0); // Scroll to Home
+        scrollYRef.current = 0;
+      }
+    } else if (scrollDirection === 'up') {
+      if (scrollYRef.current >= windowWidth * 3.1) {
+        setScrollY(windowWidth * 3); // Scroll to Experience
+        scrollYRef.current = windowWidth * 3;
+      } else if (scrollYRef.current >= windowWidth * 2.1) {
+        setScrollY(windowWidth * 2); // Scroll to Skills
+        scrollYRef.current = windowWidth * 2;
+      } else if (scrollYRef.current >= windowWidth * 1.1) {
+        setScrollY(windowWidth); // Scroll to About
+        scrollYRef.current = windowWidth;
+      } else if (scrollYRef.current >= windowWidth * 0.5) {
+        setScrollY(windowWidth * 0.1); // Scroll to Home
+        scrollYRef.current = 0;
+      } else {
+        setScrollY(0); // Stay on Home
+        scrollYRef.current = 0;
+      }
+    }
   };
 
   const onWheel = (e) => {
@@ -54,6 +90,10 @@ function App() {
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
     }
+
+    scrollTimeoutRef.current = setTimeout(() => {
+      handleScrollEnd();
+    }, 150);
   };
 
   const onTouchStart = (e) => {
@@ -70,35 +110,26 @@ function App() {
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
     }
-  };
 
-  const onTouchEnd = () => {
-    const pageThreshold = currentPage * pageWidth;
-    if (scrollYRef.current > pageThreshold + scrollThreshold) {
-      handleScrollToPage(currentPage + 1);
-    } else if (scrollYRef.current < pageThreshold - scrollThreshold) {
-      handleScrollToPage(currentPage - 1);
-    } else {
-      handleScrollToPage(currentPage);
-    }
+    scrollTimeoutRef.current = setTimeout(() => {
+      handleScrollEnd();
+    }, 150);
   };
 
   useEffect(() => {
     window.addEventListener('wheel', onWheel, { passive: false });
     window.addEventListener('touchstart', onTouchStart, { passive: false });
     window.addEventListener('touchmove', onTouchMove, { passive: false });
-    window.addEventListener('touchend', onTouchEnd, { passive: true });
 
     return () => {
       window.removeEventListener('wheel', onWheel);
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchmove', onTouchMove);
-      window.removeEventListener('touchend', onTouchEnd);
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
     };
-  }, [currentPage]);
+  }, [scrollDirection]);
 
   // Define animations for the pages
   const homePageProps = useSpring({
@@ -107,31 +138,31 @@ function App() {
   });
 
   const aboutPageProps = useSpring({
-    transform: `translateX(${Math.min(pageWidth, pageWidth - scrollY)}px)`,
+    transform: `translateX(${Math.min(window.innerWidth, window.innerWidth - scrollY)}px)`,
     config: { tension: 210, friction: 20 },
     opacity: scrollY > 0 ? 1 : 0,
     zIndex: scrollY > 0 ? 1 : 0,
   });
 
   const skillPageProps = useSpring({
-    transform: `translateX(${Math.min(2 * pageWidth - scrollY, pageWidth)}px)`,
+    transform: `translateX(${Math.min(2 * window.innerWidth - scrollY, window.innerWidth)}px)`,
     config: { tension: 210, friction: 20 },
-    opacity: scrollY > pageWidth ? 1 : 0,
-    zIndex: scrollY > pageWidth ? 1 : 0,
+    opacity: scrollY > window.innerWidth ? 1 : 0,
+    zIndex: scrollY > window.innerWidth ? 1 : 0,
   });
 
   const experiencePageProps = useSpring({
-    transform: `translateX(${Math.min(3 * pageWidth - scrollY, 2 * pageWidth)}px)`,
+    transform: `translateX(${Math.min(3 * window.innerWidth - scrollY, 2 * window.innerWidth)}px)`,
     config: { tension: 210, friction: 20 },
-    opacity: scrollY > pageWidth * 2 ? 1 : 0,
-    zIndex: scrollY > pageWidth * 2 ? 1 : 0,
+    opacity: scrollY > window.innerWidth ? 2 : 0,
+    zIndex: scrollY > window.innerWidth ? 2 : 0,
   });
 
   const personalProjectProps = useSpring({
-    transform: `translateX(${Math.min(4 * pageWidth - scrollY, 3 * pageWidth)}px)`,
+    transform: `translateX(${Math.min(4 * window.innerWidth - scrollY, 3 * window.innerWidth)}px)`,
     config: { tension: 210, friction: 20 },
-    opacity: scrollY > pageWidth * 3 ? 1 : 0,
-    zIndex: scrollY > pageWidth * 3 ? 1 : 0,
+    opacity: scrollY > window.innerWidth ? 3 : 0,
+    zIndex: scrollY > window.innerWidth ? 3 : 0,
   });
 
   useEffect(() => {
@@ -144,7 +175,7 @@ function App() {
     <>
       <Navbar handleScrollToPage={handleScrollToPage} splashScreenVisible={splashScreenVisible} />
       <SplashScreen splashScreenVisible={splashScreenVisible} />
-      {!splashScreenVisible && (
+      {!splashScreenVisible &&
         <div style={{ overflow: 'hidden', position: 'relative', height: '100vh' }}>
           <Contact />
           <animated.div
@@ -168,7 +199,7 @@ function App() {
             ref={aboutRef}
           >
             <Aboutme
-              windowWidth={pageWidth}
+              windowWidth={window.innerWidth}
               scrollY={scrollY}
               scrollYRef={scrollYRef}
             />
@@ -207,8 +238,7 @@ function App() {
             <PersonalProject />
           </animated.div>
           <Footer />
-        </div>
-      )}
+        </div>}
     </>
   );
 }

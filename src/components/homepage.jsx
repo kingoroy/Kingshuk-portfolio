@@ -16,8 +16,8 @@ const HomePage = () => {
   const [firstLoad, setFirstLoad] = useState(true);
   const [showContent, setShowContent] = useState(firstLoad ? true : false);
 
-  const titleTextTimeout = isMobile ? 200 : firstLoad ? 0 : 2000;  // Ensure no delay for mobile on first load
-  const titleTextDuration = isMobile ? 1 : firstLoad ? 0 : 2;
+  const titleTextTimeout = isMobile ? 200 : firstLoad ? 0 : 1000;  // Ensure no delay for mobile on first load
+  const titleTextDuration = isMobile ? 0.5 : firstLoad ? 0 : 1000;
   useEffect(() => {
     if (inView) {
       setShowContent(false);

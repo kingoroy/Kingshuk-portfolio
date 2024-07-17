@@ -30,8 +30,8 @@ const Skills = () => {
   const titleControls = useAnimation();
   const skillsControls = useAnimation();
   const [showContent, setShowContent] = useState(false);
-  const titleTextTimeout = isMobile ? 1000 : 2000;
-  const titleTextDuration = isMobile ? 1 : 2;
+  const titleTextTimeout = isMobile ? 500 : 1000;
+  const titleTextDuration = isMobile ? 0.5 : 1;
 
   useEffect(() => {
     if (inView) {
