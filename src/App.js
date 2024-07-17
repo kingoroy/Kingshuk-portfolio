@@ -35,26 +35,26 @@ function App() {
     scrollYRef.current = scrollTo;
   };
 
-  const handleScrollEnd = () => {
-    let windowWidth = window.innerWidth;
+  // const handleScrollEnd = () => {
+  //   let windowWidth = window.innerWidth;
 
-    if (scrollYRef.current >= windowWidth * 3.5) {
-      setScrollY(windowWidth * 4); // Scroll to PersonalProject
-      scrollYRef.current = windowWidth * 4;
-    } else if (scrollYRef.current >= windowWidth * 2.5) {
-      setScrollY(windowWidth * 3); // Scroll to Experience
-      scrollYRef.current = windowWidth * 3;
-    } else if (scrollYRef.current >= windowWidth * 1.5) {
-      setScrollY(windowWidth * 2); // Scroll to Skills
-      scrollYRef.current = windowWidth * 2;
-    } else if (scrollYRef.current >= windowWidth * 0.5) {
-      setScrollY(windowWidth); // Scroll to About
-      scrollYRef.current = windowWidth;
-    } else {
-      setScrollY(0); // Scroll to Home
-      scrollYRef.current = 0;
-    }
-  };
+  //   if (scrollYRef.current >= windowWidth * 3.1) {
+  //     setScrollY(windowWidth * 4); // Scroll to PersonalProject
+  //     scrollYRef.current = windowWidth * 4;
+  //   } else if (scrollYRef.current >= windowWidth * 2.1) {
+  //     setScrollY(windowWidth * 3); // Scroll to Experience
+  //     scrollYRef.current = windowWidth * 3;
+  //   } else if (scrollYRef.current >= windowWidth * 1.1) {
+  //     setScrollY(windowWidth * 2); // Scroll to Skills
+  //     scrollYRef.current = windowWidth * 2;
+  //   } else if (scrollYRef.current >= windowWidth * 0.1) {
+  //     setScrollY(windowWidth); // Scroll to About
+  //     scrollYRef.current = windowWidth;
+  //   } else {
+  //     setScrollY(0); // Scroll to Home
+  //     scrollYRef.current = 0;
+  //   }
+  // };
 
   const onWheel = (e) => {
     e.preventDefault();
@@ -65,7 +65,7 @@ function App() {
     }
 
     scrollTimeoutRef.current = setTimeout(() => {
-      handleScrollEnd();
+      // handleScrollEnd();
     }, 150);
   };
 
@@ -85,7 +85,7 @@ function App() {
     }
 
     scrollTimeoutRef.current = setTimeout(() => {
-      handleScrollEnd();
+      // handleScrollEnd();
     }, 150);
   };
 
