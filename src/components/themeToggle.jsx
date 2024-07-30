@@ -23,7 +23,7 @@ const ThemeToggle = () => {
 
   return (
     <div className="toggle-container" onClick={() =>toggleDarkMode()}>
-      <div className={`toggle-button ${isDarkMode ? 'dark' : 'light'}`} style={{display: 'flex', cursor: 'pointer'}}>
+      <div className={`toggle-button`} style={{display: 'flex', cursor: 'pointer'}}>
         <AnimatePresence>
           {!isDarkMode ? (
             <motion.div

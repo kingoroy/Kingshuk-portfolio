@@ -112,6 +112,8 @@
                 width: fit-content;
                 text-wrap: nowrap;
                 color: white;
+                cursor: pointer;
+                
                 @include breakpoint(small-only) {
                     font-size: 10px;
                     padding: 4px 10px;
@@ -144,3 +146,6 @@
       scale: 1;
     }
   }
+
+
+  

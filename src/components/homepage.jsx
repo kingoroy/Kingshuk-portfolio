@@ -7,6 +7,10 @@ import MyName from './myname';
 import animatedData from '../assets/icons/hello.json';
 import Lottie from 'lottie-react';
 // import {hiBoy} from '../assets/pictures/'
+
+
+const resumePdfUrl = 'https://drive.google.com/uc?export=download&id=1RV8IFReSmLxmMk72UKwCDy6hSQ_cSbXp';
+
 const HomePage = () => {
   const { isMobile } = useBreakpoints();
   const ref = useRef(null);
@@ -16,8 +20,8 @@ const HomePage = () => {
   const [firstLoad, setFirstLoad] = useState(true);
   const [showContent, setShowContent] = useState(firstLoad ? true : false);
 
-  const titleTextTimeout = isMobile ? 200 : firstLoad ? 0 : 1000;  // Ensure no delay for mobile on first load
-  const titleTextDuration = isMobile ? 0.5 : firstLoad ? 0 : 1000;
+  const titleTextTimeout = isMobile ? 200 : firstLoad ? 0 : 2000;  // Ensure no delay for mobile on first load
+  const titleTextDuration = isMobile ? 1 : firstLoad ? 0 : 2;
   useEffect(() => {
     if (inView) {
       setShowContent(false);
@@ -59,13 +63,19 @@ const HomePage = () => {
       initial: { opacity: 0, scale: 0 },
       animate: { opacity: 1, scale: 1, transition: { duration: 1 } }
     },
-    // title: {
-    //   initial: { opacity: 0 },
-    //   animate: { opacity: 1 },
-    //   exit: { opacity: 0 },
-    //   transition: { duration: 2 }
-    // }
+
   };
+
+  const handleResumeClick = () => {
+    // Create a temporary link element and trigger a click
+    const link = document.createElement('a');
+    link.href = resumePdfUrl; // Set the href to the resume URL
+    link.download = 'kingshuk_resume.pdf'; // Set the filename for the download
+    document.body.appendChild(link); // Append the link to the body
+    link.click(); // Trigger a click on the link
+    document.body.removeChild(link); // Remove the link from the document
+  };
+  
 
   return (
     <>
@@ -111,7 +121,7 @@ const HomePage = () => {
               </div>
               <div className='resume-btn-container'>
                 {/* <div className='contact-btn'>Contact Me</div> */}
-                <div className='resume-btn'>Get Resume</div>
+                <div className='resume-btn' onClick={handleResumeClick}>Get Resume</div>
               </div>
             </motion.div>
             <motion.div

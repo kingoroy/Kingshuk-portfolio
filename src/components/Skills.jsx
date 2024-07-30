@@ -33,6 +33,22 @@ const Skills = () => {
   const titleTextTimeout = isMobile ? 500 : 1000;
   const titleTextDuration = isMobile ? 0.5 : 1;
 
+  async function fetchData() {
+    try {
+      // console.log('start');
+      // const response = await fetch('https://reqres.in/api/users?page=2');
+      // const data = await response.json();
+      // console.log(data);
+      // console.log('end');
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  
+  fetchData();
+  
+  
+
   useEffect(() => {
     if (inView) {
       // First, animate out the "SKILLS" text
